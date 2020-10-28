@@ -7,7 +7,7 @@ export class FormUserInput extends Component {
     
         this.state = {
              username:'',
-             topic:''
+             topic:'react'
 
         }
     }
@@ -25,20 +25,27 @@ export class FormUserInput extends Component {
         })
     }
     
+    handleSubmitForm = event => {
+        alert(`${this.state.username} loves ${this.state.topic}`)
+        // event.preventDefault()
+    }
 
     render() {
+        const {username, topic} = this.state
         return (
-            <form>
+            <form onSubmit={this.handleSubmitForm}>
                 
                 <label>NAME</label>
-                <input type='text' value={this.state.username} onChange={this.handleUserNameChange}></input>
+                <input type='text' value={username} onChange={this.handleUserNameChange}></input>
                 <br />
                 <label>TOPIC</label>
-                <select value={this.state.topic} onChange={this.handleTopicChange}>
+                <select value={topic} onChange={this.handleTopicChange}>
                     <option value='angular'>Angular</option>
                     <option value='vue'>Vue</option>
                     <option value='react'>React</option>
                 </select>
+                <br />
+                <button type='submit'>Submit</button>
             </form>
         )
     }
